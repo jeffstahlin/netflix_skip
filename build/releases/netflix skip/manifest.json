@@ -1,0 +1,55 @@
+{
+    "name": "Netflix Skip",
+    "description": "Automatically skip the intro in Netflix videos that support it",
+    "version": "0.1",
+    "manifest_version": 2,
+    "minimum_chrome_version": "25",
+    "default_locale": "en",
+    "icons": [{
+        "16": "img/ext_icons/16.png",
+        "48": "img/ext_icons/48.png",
+        "128": "img/ext_icons/128.png"
+    }],
+    "page_action": {
+        "default_icon": {
+            "19": "img/ext_icons/19.png",
+            "38": "img/ext_icons/38.png"
+        },
+        "default_title": "Netflix Skip",
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "scripts": ["js/storage.js", "js/background.js"],
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches": ["*://netflix.com/*"],
+            "css": ["css/content_script.css"],
+            "js": ["js/content_script.js"]
+        }
+    ],
+    "options_page": "options.html",
+    "content_security_policy": "manifest_version 2",
+    "homepage_url": "http://path/to/homepage",
+    "incognito": "spanning",
+    "key": "",
+    "offline_enabled": false,
+    "requirements": {
+    },
+    "update_url": "",
+    "web_accessible_resources": [
+        "img/ext_icons/16.png"
+    ],
+    "permissions": [
+        "*://*.netflix.com/*",
+        "background",
+        "chrome://favicon/",
+        "debugger",
+        "declarativeContent",
+        "storage",
+        "tabCapture",
+        "webNavigation",
+        "webRequest"
+    ]
+}
